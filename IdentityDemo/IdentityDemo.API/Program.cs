@@ -50,7 +50,8 @@ app.MapGet("/weatherforecast", () =>
 	return forecast;
 })
 .WithName("GetWeatherForecast")
-.WithOpenApi();
+.WithOpenApi()
+.RequireAuthorization();
 
 app.MapIdentityApi<IdentityUser>().WithOpenApi();
 

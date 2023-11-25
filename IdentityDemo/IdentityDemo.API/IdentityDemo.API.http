@@ -1,0 +1,59 @@
+@url = http://localhost:5153
+@user=admin
+@password=P@$$w0rd1
+@email=admin@notadomain.com
+
+###
+
+POST {{url}}/register
+Content-Type: application/json
+
+{
+  "username": "{{user}}",
+  "password": "{{password}}",
+  "email": "{{email}}"
+}
+
+###
+
+POST {{url}}/connect/token
+Content-Type: application/json
+
+{
+  "email": "{{email}}",
+  "password": "{{password}}"
+}
+
+###
+
+POST {{url}}/login?useCookies=true
+Content-Type: application/json
+
+{
+  "email": "{{email}}",
+  "password": "{{password}}"
+}
+
+###
+
+@token=CfDJ8LIPFGWx8IBJrTVYES7xCtOc1rV0CjqQo1D6msm1AmWsr19urrEXh8_AOwD9ZD536RWh36cWpToHdnTY3RhvekL5k40r6VVMke_GcWRhy7HH5YentAZYrYlXJH1aBOeVKXTzbysuxYdJjbZD_OE-BrdV1mzi71FYRcWD5GoZZ1We5ikzpFKBla1y--6h-9-_Ir15TRNfCre-Yhj7cOdVJMo4fkuJ1ve6Zoax4FUQuOzgLLPAVmpn7R3Rb6nmVkRafHtTWJJr26I0IPk8VSZAMmvqiL1Ym9s6PwxBOGloryeOOtsuhQwZCtFQ_zK5aEId52gr36U0jvY6YspOtdjI5IV8QIX1Xhd_5YzyKwi9YUr5bJJDjsxO2fDsDJ64nXoYGuw-vRF7TS3vLcRrAmQrl4tIvSztuEyHY4jU-66m6MYspNoZ2Ddz95YmfNVpw3T1N11xQuw9LRVdIxKQkqk-ctVKxG_LbZmuzJwtbKCsLCYfjHTBxo4P3SM72oIl_bX0K7DB9yrvjJZQnEtEMuxLv9jKvW1LOjT6XsTmW-32gLp85tFY8P9fDERaN83DGzzhrKc4mLq7zVsX8s5n1uqTpc7cOrtD-Ms2XKudCwXCn0Tz7AW0Fy9c-EfWQrM-ZfEPNOatKUxfmm2YN1c8LQLzXXI23k_W-hZRnrX7mwB5Azn5njo3uhDRDGufa3UdwcnI71CxY4kXF2iSZ1fd9FzPezw
+GET {{url}}/weatherforecast
+Authorization: Bearer {{token}}
+Accept: application/json
+
+
+###
+
+@refreshToken=
+
+POST {{url}}/refresh
+Content-Type: application/json
+
+{
+  "refreshToken": "{{refreshToken}}"
+}
+
+###
+
+GET {{url}}/account/info
+
